@@ -1,0 +1,29 @@
+name: plan
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/plan.yaml
+      - *.tf
+      - *.hcl
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+
+    env: 
+      COCKROACH_API_KEY: ${{ secrets.COCKROACH_API_KEY }} 
+      TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_CLOUD_API_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform plan
+        run: |
+          terraform plan \
+            -var='project_env=prod' \
+            -var='sql_user_password=${{ secrets.COCKROACH_SQL_USER_PASSWORD }}'

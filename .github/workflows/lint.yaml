@@ -1,0 +1,24 @@
+name: lint
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/lint.yaml
+      - *.tf
+      - *.hcl
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform format
+        run: terraform fmt -recursive -check
+
+      - name: Terraform validate
+        run: terraform validate

@@ -1,0 +1,14 @@
+name: destroy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up terraform
+        uses: hashicorp/setup-terraform@v2
