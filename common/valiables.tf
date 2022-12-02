@@ -1,5 +1,5 @@
-variable "env" {
+variable "project_env" {
   type        = string
   nullable    = false
-  description = "environment"
+  description = "profect env"
 }
