@@ -14,8 +14,6 @@ defaults:
 env: 
   COCKROACH_API_KEY: ${{ secrets.COCKROACH_API_KEY }} 
   TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_CLOUD_API_TOKEN }}
-  TF_VAR_project_env: prev
-  TF_VAR_sql_user_password: ${{ secrets.COCKROACH_SQL_USER_PASSWORD }}
 
 jobs:
   preview:
@@ -32,7 +30,13 @@ jobs:
         run: terraform init
 
       - name: Terraform plan
-        run: terraform plan
+        run: |
+          terraform plan \
+            -var 'env=prev' \
+            -var 'sql_user_password=${{ secrets.COCKROACH_SQL_USER_PASSWORD }}'
 
       - name: Terraform apply
-        run: terraform apply -auto-approve
+        run: |
+          terraform apply -auto-approve \
+            -var 'env=prev' \
+            -var 'sql_user_password=${{ secrets.COCKROACH_SQL_USER_PASSWORD }}'
