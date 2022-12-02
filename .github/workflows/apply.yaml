@@ -17,6 +17,8 @@ jobs:
     env: 
       COCKROACH_API_KEY: ${{ secrets.COCKROACH_API_KEY }} 
       TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_CLOUD_API_TOKEN }}
+      TF_VAR_project_env: prod
+      TF_VAR_sql_user_password: ${{ secrets.COCKROACH_SQL_USER_PASSWORD }}
 
     steps:
       - name: Checkout
@@ -26,8 +28,4 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Terraform apply
-        run: |
-          terraform apply \
-            -auto-approve \
-            -var='project_env=prod' \
-            -var='sql_user_password=${{ secrets.COCKROACH_SQL_USER_PASSWORD }}'
+        run: terraform apply -auto-approve
