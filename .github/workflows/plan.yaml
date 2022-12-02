@@ -4,8 +4,8 @@ on:
   pull_request:
     paths:
       - .github/workflows/plan.yaml
-      - *.tf
-      - *.hcl
+      - '**.tf'
+      - '**.hcl'
 
 jobs:
   plan:

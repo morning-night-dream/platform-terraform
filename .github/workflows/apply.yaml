@@ -6,8 +6,8 @@ on:
       - main
     paths:
       - .github/workflows/apply.yaml
-      - *.tf
-      - *.hcl
+      - '**.tf'
+      - '**.hcl'
 
 jobs:
   apply:

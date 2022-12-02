@@ -4,8 +4,8 @@ on:
   pull_request:
     paths:
       - .github/workflows/preview.yaml
-      - *.tf
-      - *.hcl
+      - '**.tf'
+      - '**.hcl'
 
 jobs:
   preview:

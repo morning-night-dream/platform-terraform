@@ -4,8 +4,8 @@ on:
   pull_request:
     paths:
       - .github/workflows/lint.yaml
-      - *.tf
-      - *.hcl
+      - '**.tf'
+      - '**.hcl'
 
 jobs:
   lint:
