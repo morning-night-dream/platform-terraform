@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - .github/actions/setup/action.yaml
       - .github/workflows/apply.yaml
       - '**.tf'
       - '**.hcl'
@@ -21,8 +22,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up terraform
-        uses: hashicorp/setup-terraform@v2
+      - name: Setup
+        uses: ./.github/actions/setup
 
       - name: Terraform apply
         run: |

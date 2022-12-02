@@ -1,0 +1,12 @@
+name: setup terraform
+description: use terraform
+
+runs:
+  using: composite
+  steps:
+    - name: Setup terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Terraform init
+      run: terraform init
+      shell: sh

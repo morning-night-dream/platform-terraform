@@ -3,6 +3,7 @@ name: lint
 on:
   pull_request:
     paths:
+      - .github/actions/setup/action.yaml
       - .github/workflows/lint.yaml
       - '**.tf'
       - '**.hcl'
@@ -14,8 +15,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup terraform
-        uses: hashicorp/setup-terraform@v2
+      - name: Setup
+        uses: ./.github/actions/setup
 
       - name: Terraform format
         run: terraform fmt -recursive -check

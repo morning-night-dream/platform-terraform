@@ -3,6 +3,7 @@ name: plan
 on:
   pull_request:
     paths:
+      - .github/actions/setup/action.yaml
       - .github/workflows/plan.yaml
       - '**.tf'
       - '**.hcl'
@@ -19,8 +20,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup terraform
-        uses: hashicorp/setup-terraform@v2
+      - name: Setup
+        uses: ./.github/actions/setup
 
       - name: Terraform plan
         run: |
