@@ -6,6 +6,7 @@ on:
       - .github/workflows/lint.yaml
       - '**.tf'
       - '**.hcl'
+      - '**.template'
 
 env: 
   COCKROACH_API_KEY: ${{ secrets.COCKROACH_API_KEY }} 

@@ -3,7 +3,7 @@ terraform {
     organization = "morning-night-dream"
 
     workspaces {
-      name = "prod-platform"
+      name = "platform-$ENV"
     }
   }
 }

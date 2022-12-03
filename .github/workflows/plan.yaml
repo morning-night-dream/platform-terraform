@@ -6,10 +6,7 @@ on:
       - .github/workflows/plan.yaml
       - '**.tf'
       - '**.hcl'
-
-defaults:
-  run:
-    working-directory: env/prod
+      - '**.template'
 
 env: 
   COCKROACH_API_KEY: ${{ secrets.COCKROACH_API_KEY }} 
@@ -25,11 +22,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup terraform
-        uses: hashicorp/setup-terraform@v2
-
-      - name: Terraform init
-        run: terraform init
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          env: $TF_VAR_env
 
       - name: Terraform plan
         run: terraform plan
