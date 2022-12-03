@@ -6,7 +6,7 @@
 1. `Create a workspace`
 2. chose `API-driven workflow`
 3. Workspace Name: platform-$ENV
-4. Settings > General > Execution Mode: change Local -> `Save settings`
+4. Settings > General > Execution Mode -> change Local -> `Save settings`
 
 ## Install
 
