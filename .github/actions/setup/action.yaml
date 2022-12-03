@@ -22,6 +22,10 @@ runs:
       run: envsubst '$$ENV' < backend.tf.template > backend.tf
       shell: sh
 
+    - name: Confirm
+      run: cat backend.tf
+      shell: sh
+
     - name: Terraform init
       run: terraform init
       shell: sh
