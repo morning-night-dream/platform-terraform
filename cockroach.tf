@@ -35,8 +35,8 @@ provider "cockroach" {
   # export COCKROACH_API_KEY with the cockroach cloud API Key
 }
 
-resource "cockroach_cluster" "db" {
-  name           = "${var.env}-platform-db"
+resource "cockroach_cluster" "cockroach_db" {
+  name           = "${var.env}-platform"
   cloud_provider = var.cloud_provider
   serverless = {
     spend_limit = var.serverless_spend_limit
@@ -44,8 +44,8 @@ resource "cockroach_cluster" "db" {
   regions = [for r in var.cloud_provider_regions : { name = r }]
 }
 
-resource "cockroach_sql_user" "db_user" {
-  id       = cockroach_cluster.db.id
-  name     = "${var.env}-platform-db"
+resource "cockroach_sql_user" "cockroach_db_user" {
+  id       = cockroach_cluster.cockroach_db.id
+  name     = "${var.env}-platform"
   password = var.sql_user_password
 }
