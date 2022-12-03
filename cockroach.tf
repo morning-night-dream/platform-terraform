@@ -36,7 +36,7 @@ provider "cockroach" {
 }
 
 resource "cockroach_cluster" "cockroach_db" {
-  name           = "${var.env}-platform"
+  name           = "platform-${var.env}"
   cloud_provider = var.cloud_provider
   serverless = {
     spend_limit = var.serverless_spend_limit
@@ -46,6 +46,6 @@ resource "cockroach_cluster" "cockroach_db" {
 
 resource "cockroach_sql_user" "cockroach_db_user" {
   id       = cockroach_cluster.cockroach_db.id
-  name     = "${var.env}-platform"
+  name     = "platform-${var.env}"
   password = var.sql_user_password
 }
