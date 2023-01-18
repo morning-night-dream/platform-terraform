@@ -13,6 +13,8 @@ env:
   TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_CLOUD_API_TOKEN }}
   TF_VAR_env: prev
   TF_VAR_sql_user_password: ${{ secrets.COCKROACH_SQL_USER_PASSWORD }}
+  TF_VAR_upstash_email: ${{ secrets.UPSTASH_EMAIL }}
+  TF_VAR_upstash_api_key: ${{ secrets.UPSTASH_API_KEY }}
 
 jobs:
   preview:
