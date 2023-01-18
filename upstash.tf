@@ -21,9 +21,9 @@ provider "upstash" {
   api_key = var.upstash_api_key
 }
 
-resource "upstash_database" "upstash" {
+resource "upstash_redis_database" "upstash" {
   database_name = "platform-${var.env}"
   region        = var.upstash_region
   tls           = "true"
-  multi_zone    = "false"
+  multizone     = "false"
 }
