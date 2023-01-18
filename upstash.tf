@@ -27,3 +27,7 @@ resource "upstash_redis_database" "upstash" {
   tls           = "true"
   multizone     = "false"
 }
+
+data "upstash_redis_database_data" "upstash_data" {
+  database_id = resource.upstash_redis_database.upstash.database_id
+}
