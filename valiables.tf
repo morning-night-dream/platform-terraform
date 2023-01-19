@@ -3,3 +3,7 @@ variable "env" {
   nullable    = false
   description = "environment"
 }
+
+locals {
+  is_prod = var.env == "prod"
+}
