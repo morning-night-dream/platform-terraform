@@ -31,5 +31,5 @@ resource "upstash_redis_database" "upstash" {
 
 data "upstash_redis_database_data" "upstash_data" {
   count       = local.is_prod ? 1 : 0
-  database_id = resource.upstash_redis_database.upstash.database_id
+  database_id = resource.upstash_redis_database.upstash[0].database_id
 }
