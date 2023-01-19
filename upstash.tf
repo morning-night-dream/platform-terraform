@@ -32,6 +32,6 @@ resource "upstash_redis_database" "upstash" {
 
 data "upstash_redis_database_data" "upstash_data" {
   count = local.is_prod ? 1 : 0
-  # countによりリソースを作成する場合はindex指定が必要  
+  # countによりリソースを作成した場合はindex指定が必要  
   database_id = resource.upstash_redis_database.upstash[0].database_id
 }
