@@ -22,6 +22,7 @@ provider "upstash" {
 }
 
 resource "upstash_redis_database" "upstash" {
+  # 無料プランだと1アカウントにつき1つしか作成できないため
   count         = local.is_prod ? 1 : 0
   database_name = "platform-${var.env}"
   region        = var.upstash_region
